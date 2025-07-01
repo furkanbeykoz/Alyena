@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>❤️ Aleyna'ma Tatlı Süpriz! ❤️</title>
+    <title>❤️ Aleyna Hanıma. ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
         
@@ -17,6 +18,7 @@
             align-items: center;
             font-family: 'Pacifico', cursive;
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ff69b4" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'), auto;
+            touch-action: manipulation;
         }
         
         @keyframes gradient {
@@ -28,17 +30,10 @@
         .container {
             position: relative;
             width: 90%;
-<<<<<<< HEAD
-            max-width: 40%;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            padding: 30px;
-=======
             max-width: 75%;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 30px;
             padding: 10px;
->>>>>>> f441a973ad2f5dae6be56ea26326bd74aa6f476d
             box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
             text-align: center;
             overflow: hidden;
@@ -86,6 +81,10 @@
             overflow: hidden;
             z-index: 1;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
         
         #yesBtn {
@@ -104,6 +103,11 @@
             color: white;
             position: absolute;
             transition: all 0.2s;
+            pointer-events: auto;
+        }
+        
+        #noBtn span {
+            pointer-events: none;
         }
         
         .cute-gifs {
@@ -257,7 +261,7 @@
         <h1>Aleyna hanım, beni seviyor musunuz? 💖</h1>
         
         <button class="btn" id="yesBtn">EVET! Çook seviyorum! 💕</button>
-        <button class="btn" id="noBtn">Belki... 🤔</button>
+        <button class="btn" id="noBtn"><span>Belki... 🤔</span></button>
     </div>
     
     <div class="hidden-message" id="hiddenMessage">
@@ -302,9 +306,10 @@
         setInterval(createHearts, 300);
         setInterval(createBubble, 500);
         
-        // No button escape
+        // No button escape - for both mouse and touch
         const noBtn = document.getElementById('noBtn');
-        noBtn.addEventListener('mouseover', function() {
+        
+        function moveNoButton() {
             const containerRect = document.querySelector('.container').getBoundingClientRect();
             const btnRect = noBtn.getBoundingClientRect();
             
@@ -319,10 +324,19 @@
             
             // Change button text randomly
             const funnyTexts = ["Yakalayamazsın!", "Hayır!", "Belki...", "Olabilir", "Sanmam", "Nope!", "Üzgünüm"];
-            noBtn.textContent = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
+            noBtn.innerHTML = `<span>${funnyTexts[Math.floor(Math.random() * funnyTexts.length)]}</span>`;
             
             // Create flying kisses
             createKiss();
+        }
+        
+        // Mouse events
+        noBtn.addEventListener('mouseover', moveNoButton);
+        
+        // Touch events for mobile
+        noBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            moveNoButton();
         });
         
         // Yes button action
@@ -335,10 +349,6 @@
                 origin: { y: 0.6 },
                 colors: ['#ff0000', '#ff69b4', '#ff1493', '#ff00ff']
             });
-            
-            // Play kiss sound (optional)
-            // const kissSound = new Audio('img/kiss-sound.mp3');
-            // kissSound.play();
         });
         
         // Sparkle effect on gif click
@@ -401,6 +411,33 @@
             });
             
             document.addEventListener('mouseup', () => {
+                isDragging = false;
+                setTimeout(() => {
+                    gif.style.position = 'static';
+                }, 1000);
+            });
+            
+            // Touch events for mobile
+            gif.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                const touch = e.touches[0];
+                offsetX = touch.clientX - gif.getBoundingClientRect().left;
+                offsetY = touch.clientY - gif.getBoundingClientRect().top;
+                gif.style.position = 'absolute';
+                gif.style.zIndex = '100';
+                e.preventDefault();
+            });
+            
+            document.addEventListener('touchmove', (e) => {
+                if (isDragging) {
+                    const touch = e.touches[0];
+                    gif.style.left = (touch.clientX - offsetX) + 'px';
+                    gif.style.top = (touch.clientY - offsetY) + 'px';
+                    e.preventDefault();
+                }
+            }, { passive: false });
+            
+            document.addEventListener('touchend', () => {
                 isDragging = false;
                 setTimeout(() => {
                     gif.style.position = 'static';
