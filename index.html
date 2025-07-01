@@ -1,451 +1,264 @@
+<!-- Başlık ve stil aynı kalıyor -->
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <title>❤️ Aleyna Hanıma. ❤️</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-        
-        body {
-            margin: 0;
-            overflow: hidden;
-            background: linear-gradient(45deg, #ffdbdb, #fff2f2, #ffe8e8);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Pacifico', cursive;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ff69b4" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'), auto;
-            touch-action: manipulation;
-        }
-        
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .container {
-            position: relative;
-            width: 90%;
-            max-width: 75%;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            padding: 10px;
-            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
-            text-align: center;
-            overflow: hidden;
-            backdrop-filter: blur(5px);
-            border: 3px solid #fff;
-            transform-style: preserve-3d;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(1deg); }
-            50% { transform: translateY(-20px) rotate(-1deg); }
-        }
-        
-        h1 {
-            color: #ff6b88;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-            display: inline-block;
-        }
-        
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #ff6b88, #ffb6c1, #ff6b88);
-            border-radius: 5px;
-        }
-        
-        .btn {
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            margin: 15px;
-            transition: all 0.3s;
-            font-family: 'Pacifico', cursive;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        
-        #yesBtn {
-            background: linear-gradient(45deg, #ff6b88, #ff8e53);
-            color: white;
-            font-size: 1.3rem;
-        }
-        
-        #yesBtn:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 10px 20px rgba(255, 107, 136, 0.4);
-        }
-        
-        #noBtn {
-            background: linear-gradient(45deg, #a18cd1, #fbc2eb);
-            color: white;
-            position: absolute;
-            transition: all 0.2s;
-            pointer-events: auto;
-        }
-        
-        #noBtn span {
-            pointer-events: none;
-        }
-        
-        .cute-gifs {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .gif-container {
-            width: 250px;
-            height: 250px;
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-        
-        .gif-container:hover {
-            transform: scale(1.1);
-        }
-        
-        .gif-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .floating-hearts {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .heart {
-            position: absolute;
-            opacity: 0;
-            animation: float-up 4s linear infinite;
-        }
-        
-        @keyframes float-up {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) scale(1); opacity: 0; }
-        }
-        
-        .sparkle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: gold;
-            pointer-events: none;
-            z-index: 10;
-            animation: sparkle 1s ease-out forwards;
-        }
-        
-        @keyframes sparkle {
-            0% { transform: scale(0); opacity: 1; }
-            100% { transform: scale(3); opacity: 0; }
-        }
-        
-        .hidden-message {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 235, 238, 0.98);
-            z-index: 100;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.5s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .hidden-message h2 {
-            font-size: 3rem;
-            color: #e91e63;
-            margin-bottom: 30px;
-            text-align: center;
-            padding: 0 20px;
-        }
-        
-        .kiss-gif {
-            width: 300px;
-            height: 300px;
-            object-fit: contain;
-            margin-bottom: 30px;
-            border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .kiss {
-            position: absolute;
-            font-size: 2rem;
-            animation: fly 3s linear forwards;
-            pointer-events: none;
-            z-index: 50;
-        }
-        
-        @keyframes fly {
-            to { transform: translate(var(--tx), var(--ty)) rotate(360deg); }
-        }
-        
-        .bubble {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.7;
-            animation: bubble-up 4s ease-out infinite;
-            z-index: -1;
-        }
-        
-        @keyframes bubble-up {
-            0% { transform: translateY(0) scale(0); opacity: 0; }
-            20% { opacity: 0.7; }
-            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>❤️ Aleyna Hanıma. ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: linear-gradient(45deg, #ffdbdb, #fff2f2, #ffe8e8);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Pacifico', cursive;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ff69b4" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'), auto;
+      touch-action: manipulation;
+      padding: 10px;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 30px;
+      padding: 15px;
+      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+      text-align: center;
+      overflow: hidden;
+      backdrop-filter: blur(5px);
+      border: 3px solid #fff;
+      transform-style: preserve-3d;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(1deg); }
+      50% { transform: translateY(-20px) rotate(-1deg); }
+    }
+
+    h1 {
+      color: #ff6b88;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .cute-gifs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    .gif-container {
+      width: 160px;
+      height: 160px;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s;
+      flex-shrink: 0;
+    }
+
+    .gif-container:hover {
+      transform: scale(1.1);
+    }
+
+    .gif-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .btn {
+      border: none;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 10px;
+      font-family: 'Pacifico', cursive;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      user-select: none;
+    }
+
+    #yesBtn {
+      background: linear-gradient(45deg, #ff6b88, #ff8e53);
+      color: white;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 10px 20px rgba(255, 107, 136, 0.4);
+    }
+
+    #noBtn {
+      background: linear-gradient(45deg, #a18cd1, #fbc2eb);
+      color: white;
+      position: absolute;
+      transition: all 0.2s;
+      pointer-events: auto;
+    }
+
+    .hidden-message {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(255, 235, 238, 0.98);
+      z-index: 100;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .hidden-message h2 {
+      font-size: 2rem;
+      color: #e91e63;
+      margin-bottom: 20px;
+    }
+
+    .kiss-gif {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      margin-bottom: 30px;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+
+      .gif-container {
+        width: 140px;
+        height: 140px;
+      }
+
+      .kiss-gif {
+        width: 180px;
+        height: 180px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="floating-hearts" id="heartsContainer"></div>
-    
-    <div class="container">
-        <div class="cute-gifs">
-            <div class="gif-container" onclick="addSparkle(event)">
-                <img src="img\cuddle-cute.gif" alt="Peach and Goma">
-            </div>
-            <div class="gif-container" onclick="addSparkle(event)">
-                <img src="img\cat.gif" alt="Sevimli Kedi">
-            </div>
-        </div>
-        
-        <h1>Aleyna hanım, beni seviyor musunuz? 💖</h1>
-        
-        <button class="btn" id="yesBtn">EVET! Çook seviyorum! 💕</button>
-        <button class="btn" id="noBtn"><span>Belki... 🤔</span></button>
-    </div>
-    
-    <div class="hidden-message" id="hiddenMessage">
-        <img src="img\dudu-hug-bubu-dudu-kiss.gif" class="kiss-gif" alt="Öpücük">
-        <h2>Biliyodum bebeğimm ! 🐥<br>Bende çok seviyorunm civcivimii! 💖</h2>
-        <p style="font-size: 1.5rem; color: #ff6b88;">ÇOK TATLI ÇOK ! 🐤</p>
+
+  <div class="container">
+    <div class="cute-gifs">
+      <div class="gif-container" onclick="addSparkle(event)">
+        <img src="img/cuddle-cute.gif" alt="Peach and Goma">
+      </div>
+      <div class="gif-container" onclick="addSparkle(event)">
+        <img src="img/cat.gif" alt="Sevimli Kedi">
+      </div>
     </div>
 
-    <script>
-        // Floating hearts creation
-        function createHearts() {
-            const container = document.getElementById('heartsContainer');
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = ['💖', '💗', '💓', '💞', '💕', '💘'][Math.floor(Math.random() * 6)];
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            container.appendChild(heart);
-            
-            setTimeout(() => {
-                heart.remove();
-            }, 4000);
-        }
-        
-        // Create bubbles
-        function createBubble() {
-            const bubble = document.createElement('div');
-            bubble.className = 'bubble';
-            bubble.style.left = Math.random() * 100 + 'vw';
-            bubble.style.width = (Math.random() * 50 + 20) + 'px';
-            bubble.style.height = bubble.style.width;
-            bubble.style.animationDuration = (Math.random() * 6 + 4) + 's';
-            bubble.style.animationDelay = (Math.random() * 3) + 's';
-            document.body.appendChild(bubble);
-            
-            setTimeout(() => {
-                bubble.remove();
-            }, 6000);
-        }
-        
-        setInterval(createHearts, 300);
-        setInterval(createBubble, 500);
-        
-        // No button escape - for both mouse and touch
-        const noBtn = document.getElementById('noBtn');
-        
-        function moveNoButton() {
-            const containerRect = document.querySelector('.container').getBoundingClientRect();
-            const btnRect = noBtn.getBoundingClientRect();
-            
-            const maxX = containerRect.width - btnRect.width - 30;
-            const maxY = containerRect.height - btnRect.height - 30;
-            
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
-            
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
-            
-            // Change button text randomly
-            const funnyTexts = ["Yakalayamazsın!", "Hayır!", "Belki...", "Olabilir", "Sanmam", "Nope!", "Üzgünüm"];
-            noBtn.innerHTML = `<span>${funnyTexts[Math.floor(Math.random() * funnyTexts.length)]}</span>`;
-            
-            // Create flying kisses
-            createKiss();
-        }
-        
-        // Mouse events
-        noBtn.addEventListener('mouseover', moveNoButton);
-        
-        // Touch events for mobile
-        noBtn.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            moveNoButton();
-        });
-        
-        // Yes button action
-        const yesBtn = document.getElementById('yesBtn');
-        yesBtn.addEventListener('click', function() {
-            document.getElementById('hiddenMessage').style.display = 'flex';
-            confetti({
-                particleCount: 150,
-                spread: 70,
-                origin: { y: 0.6 },
-                colors: ['#ff0000', '#ff69b4', '#ff1493', '#ff00ff']
-            });
-        });
-        
-        // Sparkle effect on gif click
-        function addSparkle(event) {
-            for (let i = 0; i < 10; i++) {
-                setTimeout(() => {
-                    const sparkle = document.createElement('div');
-                    sparkle.className = 'sparkle';
-                    sparkle.style.left = (event.clientX + (Math.random() * 40 - 20)) + 'px';
-                    sparkle.style.top = (event.clientY + (Math.random() * 40 - 20)) + 'px';
-                    sparkle.style.animationDelay = (i * 0.1) + 's';
-                    document.body.appendChild(sparkle);
-                    
-                    setTimeout(() => {
-                        sparkle.remove();
-                    }, 1000);
-                }, i * 100);
-            }
-        }
-        
-        // Create flying kisses
-        function createKiss() {
-            const kiss = document.createElement('div');
-            kiss.className = 'kiss';
-            kiss.innerHTML = '🍓';
-            kiss.style.left = noBtn.getBoundingClientRect().left + 'px';
-            kiss.style.top = noBtn.getBoundingClientRect().top + 'px';
-            
-            // Random end position
-            const tx = (Math.random() * 500 - 250) + 'px';
-            const ty = (Math.random() * 500 - 250) + 'px';
-            kiss.style.setProperty('--tx', tx);
-            kiss.style.setProperty('--ty', ty);
-            
-            document.body.appendChild(kiss);
-            
-            setTimeout(() => {
-                kiss.remove();
-            }, 3000);
-        }
-        
-        // Make gifs draggable
-        document.querySelectorAll('.gif-container').forEach(gif => {
-            let isDragging = false;
-            let offsetX, offsetY;
-            
-            gif.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                offsetX = e.clientX - gif.getBoundingClientRect().left;
-                offsetY = e.clientY - gif.getBoundingClientRect().top;
-                gif.style.position = 'absolute';
-                gif.style.zIndex = '100';
-            });
-            
-            document.addEventListener('mousemove', (e) => {
-                if (isDragging) {
-                    gif.style.left = (e.clientX - offsetX) + 'px';
-                    gif.style.top = (e.clientY - offsetY) + 'px';
-                }
-            });
-            
-            document.addEventListener('mouseup', () => {
-                isDragging = false;
-                setTimeout(() => {
-                    gif.style.position = 'static';
-                }, 1000);
-            });
-            
-            // Touch events for mobile
-            gif.addEventListener('touchstart', (e) => {
-                isDragging = true;
-                const touch = e.touches[0];
-                offsetX = touch.clientX - gif.getBoundingClientRect().left;
-                offsetY = touch.clientY - gif.getBoundingClientRect().top;
-                gif.style.position = 'absolute';
-                gif.style.zIndex = '100';
-                e.preventDefault();
-            });
-            
-            document.addEventListener('touchmove', (e) => {
-                if (isDragging) {
-                    const touch = e.touches[0];
-                    gif.style.left = (touch.clientX - offsetX) + 'px';
-                    gif.style.top = (touch.clientY - offsetY) + 'px';
-                    e.preventDefault();
-                }
-            }, { passive: false });
-            
-            document.addEventListener('touchend', () => {
-                isDragging = false;
-                setTimeout(() => {
-                    gif.style.position = 'static';
-                }, 1000);
-            });
-        });
-    </script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <h1>Aleyna hanım, beni seviyor musunuz? 💖</h1>
+
+    <button class="btn" id="yesBtn">EVET! Çook seviyorum! 💕</button>
+    <button class="btn" id="noBtn"><span>Belki... 🤔</span></button>
+  </div>
+
+  <div class="hidden-message" id="hiddenMessage">
+    <img src="img/dudu-hug-bubu-dudu-kiss.gif" class="kiss-gif" alt="Öpücük">
+    <h2>Biliyodum bebeğimm ! 🐥<br>Bende çok seviyorunm civcivimii! 💖</h2>
+    <p style="font-size: 1.3rem; color: #ff6b88;">ÇOK TATLI ÇOK ! 🐤</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+
+    yesBtn.addEventListener('click', () => {
+      document.getElementById('hiddenMessage').style.display = 'flex';
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#ff0000', '#ff69b4', '#ff1493', '#ff00ff']
+      });
+    });
+
+    noBtn.addEventListener('mouseover', () => {
+      const containerRect = document.querySelector('.container').getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+
+      const maxX = containerRect.width - btnRect.width - 30;
+      const maxY = containerRect.height - btnRect.height - 30;
+
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      noBtn.style.left = randomX + 'px';
+      noBtn.style.top = randomY + 'px';
+
+      const funnyTexts = ["Yakalayamazsın!", "Hayır!", "Belki...", "Olabilir", "Sanmam", "Nope!", "Üzgünüm"];
+      noBtn.innerHTML = `<span>${funnyTexts[Math.floor(Math.random() * funnyTexts.length)]}</span>`;
+    });
+
+    function addSparkle(event) {
+      for (let i = 0; i < 10; i++) {
+        setTimeout(() => {
+          const sparkle = document.createElement('div');
+          sparkle.className = 'sparkle';
+          sparkle.style.left = (event.clientX + (Math.random() * 40 - 20)) + 'px';
+          sparkle.style.top = (event.clientY + (Math.random() * 40 - 20)) + 'px';
+          sparkle.style.position = 'fixed';
+          sparkle.style.width = '10px';
+          sparkle.style.height = '10px';
+          sparkle.style.borderRadius = '50%';
+          sparkle.style.background = 'gold';
+          sparkle.style.zIndex = 10;
+          sparkle.style.animation = 'sparkle 1s ease-out forwards';
+          document.body.appendChild(sparkle);
+
+          setTimeout(() => {
+            sparkle.remove();
+          }, 1000);
+        }, i * 100);
+      }
+    }
+  </script>
 </body>
 </html>
