@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>❤️ Aleyna hanıma ❤️</title>
+    <title>❤️ Aleyna'ma Tatlı Süpriz! ❤️</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
         
         body {
             margin: 0;
             overflow: hidden;
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+            background: linear-gradient(45deg, #ffdbdb, #fff2f2, #ffe8e8);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
             height: 100vh;
@@ -29,10 +29,10 @@
             position: relative;
             width: 90%;
             max-width: 40%;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 30px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
             text-align: center;
             overflow: hidden;
             backdrop-filter: blur(5px);
@@ -49,7 +49,7 @@
         h1 {
             color: #ff6b88;
             font-size: 2.5rem;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             position: relative;
             display: inline-block;
@@ -99,22 +99,29 @@
             transition: all 0.2s;
         }
         
-        .cute-animals {
-            font-size: 3rem;
-            margin: 20px 0;
+        .cute-gifs {
             display: flex;
             justify-content: center;
             gap: 15px;
+            margin: 20px 0;
         }
         
-        .animal {
-            animation: bounce 2s infinite;
-            cursor: pointer;
+        .gif-container {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
         }
         
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        .gif-container:hover {
+            transform: scale(1.1);
+        }
+        
+        .gif-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .floating-hearts {
@@ -163,7 +170,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 192, 203, 0.95);
+            background: rgba(255, 235, 238, 0.98);
             z-index: 100;
             flex-direction: column;
             justify-content: center;
@@ -181,19 +188,22 @@
             color: #e91e63;
             margin-bottom: 30px;
             text-align: center;
+            padding: 0 20px;
         }
         
-        .hidden-message img {
-            width: 200px;
-            height: 200px;
+        .kiss-gif {
+            width: 300px;
+            height: 300px;
             object-fit: contain;
             margin-bottom: 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
             animation: pulse 1.5s infinite;
         }
         
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.05); }
         }
         
         .kiss {
@@ -207,19 +217,34 @@
         @keyframes fly {
             to { transform: translate(var(--tx), var(--ty)) rotate(360deg); }
         }
+        
+        .bubble {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: bubble-up 4s ease-out infinite;
+            z-index: -1;
+        }
+        
+        @keyframes bubble-up {
+            0% { transform: translateY(0) scale(0); opacity: 0; }
+            20% { opacity: 0.7; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        }
     </style>
 </head>
 <body>
     <div class="floating-hearts" id="heartsContainer"></div>
     
     <div class="container">
-        <div class="cute-animals">
-<!-- Civcivlerle romantik bir düzen 💛 -->
-<div class="animal" onclick="addSparkle(event)">🐥</div>
-<div class="animal" onclick="addSparkle(event)">🐤</div>
-<div class="animal" onclick="addSparkle(event)" style="filter: hue-rotate(330deg);">🐣</div> <!-- Pembe civciv -->
-<div class="animal" onclick="addSparkle(event)">🐥</div> <!-- Kalpli civciv -->
-<div class="animal" onclick="addSparkle(event)">🐤</div> <!-- Parlak civciv -->
+        <div class="cute-gifs">
+            <div class="gif-container" onclick="addSparkle(event)">
+                <img src="img\cuddle-cute.gif" alt="Peach and Goma">
+            </div>
+            <div class="gif-container" onclick="addSparkle(event)">
+                <img src="img\cat.gif" alt="Sevimli Kedi">
+            </div>
         </div>
         
         <h1>Aleyna hanım, beni seviyor musunuz? 💖</h1>
@@ -228,10 +253,10 @@
         <button class="btn" id="noBtn">Belki... 🤔</button>
     </div>
     
-    <div class="hidden-message" id="hiddenMessage"
-        <h2>Biliyodum bebeğimm. Ben de seni çook seviyorum inatçı kelebeğim 🦋<br>Dünyalarr kadar seviyorum 💖</h2>
-        <div style="font-size: 5rem;">💕💘💕</div>
-        <p style="font-size: 1.5rem;">ÇOK TATLI ÇOK ! 😘</p>
+    <div class="hidden-message" id="hiddenMessage">
+        <img src="img\dudu-hug-bubu-dudu-kiss.gif" class="kiss-gif" alt="Öpücük">
+        <h2>Biliyodum bebeğimm ! 🐥<br>Bende çok seviyorunm civcivimii! 💖</h2>
+        <p style="font-size: 1.5rem; color: #ff6b88;">ÇOK TATLI ÇOK ! 🐤</p>
     </div>
 
     <script>
@@ -251,7 +276,24 @@
             }, 4000);
         }
         
+        // Create bubbles
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.style.left = Math.random() * 100 + 'vw';
+            bubble.style.width = (Math.random() * 50 + 20) + 'px';
+            bubble.style.height = bubble.style.width;
+            bubble.style.animationDuration = (Math.random() * 6 + 4) + 's';
+            bubble.style.animationDelay = (Math.random() * 3) + 's';
+            document.body.appendChild(bubble);
+            
+            setTimeout(() => {
+                bubble.remove();
+            }, 6000);
+        }
+        
         setInterval(createHearts, 300);
+        setInterval(createBubble, 500);
         
         // No button escape
         const noBtn = document.getElementById('noBtn');
@@ -286,9 +328,13 @@
                 origin: { y: 0.6 },
                 colors: ['#ff0000', '#ff69b4', '#ff1493', '#ff00ff']
             });
+            
+            // Play kiss sound (optional)
+            // const kissSound = new Audio('img/kiss-sound.mp3');
+            // kissSound.play();
         });
         
-        // Sparkle effect on animal click
+        // Sparkle effect on gif click
         function addSparkle(event) {
             for (let i = 0; i < 10; i++) {
                 setTimeout(() => {
@@ -327,32 +373,30 @@
             }, 3000);
         }
         
-        // Make animals draggable
-        document.querySelectorAll('.animal').forEach(animal => {
+        // Make gifs draggable
+        document.querySelectorAll('.gif-container').forEach(gif => {
             let isDragging = false;
             let offsetX, offsetY;
             
-            animal.addEventListener('mousedown', (e) => {
+            gif.addEventListener('mousedown', (e) => {
                 isDragging = true;
-                offsetX = e.clientX - animal.getBoundingClientRect().left;
-                offsetY = e.clientY - animal.getBoundingClientRect().top;
-                animal.style.position = 'absolute';
-                animal.style.zIndex = '100';
-                animal.style.animation = 'none';
+                offsetX = e.clientX - gif.getBoundingClientRect().left;
+                offsetY = e.clientY - gif.getBoundingClientRect().top;
+                gif.style.position = 'absolute';
+                gif.style.zIndex = '100';
             });
             
             document.addEventListener('mousemove', (e) => {
                 if (isDragging) {
-                    animal.style.left = (e.clientX - offsetX) + 'px';
-                    animal.style.top = (e.clientY - offsetY) + 'px';
+                    gif.style.left = (e.clientX - offsetX) + 'px';
+                    gif.style.top = (e.clientY - offsetY) + 'px';
                 }
             });
             
             document.addEventListener('mouseup', () => {
                 isDragging = false;
                 setTimeout(() => {
-                    animal.style.position = 'static';
-                    animal.style.animation = 'bounce 2s infinite';
+                    gif.style.position = 'static';
                 }, 1000);
             });
         });
